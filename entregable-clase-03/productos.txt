@@ -1,0 +1,8 @@
+[
+  {
+    "title": "Tierra",
+    "price": 700,
+    "thumbnail": "Imagen de Tierra",
+    "id": 2
+  }
+]
