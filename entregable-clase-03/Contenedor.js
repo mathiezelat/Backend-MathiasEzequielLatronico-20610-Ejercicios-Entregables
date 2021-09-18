@@ -13,11 +13,17 @@ class Contenedor {
 
         try {
 
-            const productos = await this.productos;
-
-            producto.id = productos.length + 1;
-
-            productos.push( producto );
+        const productos = await this.productos;
+        
+        if ( !productos.length ) {
+            console.log(productos.length)
+            producto.id = 1;
+        } else {
+            producto.id = productos[productos.length - 1].id + 1;
+        }
+        
+        productos.push( producto );
+            
 
             await fs.promises.writeFile( 
                 this.archivo,
@@ -51,10 +57,11 @@ class Contenedor {
     }
 
     async getAll() {
+        
         try{
 
             if( !fs.existsSync( this.archivo ) ) return [];
-
+            
             const contenido = await fs.promises.readFile(
                 this.archivo,
                 'utf-8'
@@ -75,11 +82,12 @@ class Contenedor {
     async deleteById( id ) {
 
         try {
-
+        
         const productos = await this.productos;
-
+        
         const nuevosProductos = productos.filter( producto => producto.id !== id );
-
+        
+        
         await fs.promises.writeFile( 
             this.archivo,
             JSON.stringify( nuevosProductos, null, 2 )

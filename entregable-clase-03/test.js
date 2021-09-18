@@ -1,6 +1,6 @@
 const Contenedor = require('./Contenedor.js');
 
-const miContenedor = new Contenedor('productos.txt');
+const miContenedor = new Contenedor('productos.json');
 
 
 const main = async () => {
