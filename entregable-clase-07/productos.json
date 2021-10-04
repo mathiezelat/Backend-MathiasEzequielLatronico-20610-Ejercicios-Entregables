@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Escuadra",
+    "price": 150,
+    "thumbnail": "Imagen de Escuadra",
+    "id": 1
+  },
+  {
+    "title": "Calculadora",
+    "price": 240,
+    "thumbnail": "Imagen de Calculadora",
+    "id": 2
+  },
+  {
+    "title": "Globo Terráqueo",
+    "price": 1230,
+    "thumbnail": "Imagen de Globo Terráqueo",
+    "id": 3
+  }
+]
