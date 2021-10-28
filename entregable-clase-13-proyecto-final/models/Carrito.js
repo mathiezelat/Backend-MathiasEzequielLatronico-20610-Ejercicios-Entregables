@@ -1,16 +1,11 @@
 const fs = require('fs');
 
-const Productos = require('./Productos');
-
-const miProductos = new Productos('productos.json');
-
 class Carrito {
 
     constructor( archivo ) {
 
         this.archivo = archivo;
         this.carritos = this.getAllCarritos();
-        this.productos = miProductos.getAll();
 
     }
 
@@ -111,12 +106,10 @@ class Carrito {
         }
     }
 
-    async addProducto( id, productoId ) {
+    async addProducto( id, productos ) {
         try {
 
             const carritos = await this.carritos;
-
-            const productos = await this.productos;
 
             const carrito = carritos.find( carrito => carrito.id === id );
 
@@ -125,14 +118,9 @@ class Carrito {
                 error: 'carrito no encontrado' 
             };
 
-            const producto = productos.find( producto => producto.id === productoId );
-
-            if ( !producto ) return {
-                status: 404,
-                error: 'producto no encontrado'
+            for (const producto of productos) {
+                carrito.productos.push( producto );
             }
-
-            carrito.productos.push( producto );
 
             await fs.promises.writeFile(
                 this.archivo,

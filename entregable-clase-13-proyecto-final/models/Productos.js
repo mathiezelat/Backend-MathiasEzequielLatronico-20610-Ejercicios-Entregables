@@ -68,6 +68,43 @@ class Productos {
 
     }
 
+    async getAllById( productos ) {
+
+        try{
+
+            const productosId = productos.map( producto => producto.id );
+
+            const productosEncontrados = [];
+
+            for (const productoId of productosId) {
+
+                if( !productoId ) return {
+                    status: 400,
+                    error: 'no se recibio un id de un producto'
+                }
+                
+                const producto = await this.getById( productoId );
+
+                if( producto.error ) return {
+                    status: 404,
+                    error: `el producto con el id ${ productoId } no existe`
+                }
+
+                productosEncontrados.push( producto );
+            }
+
+            if ( !productosEncontrados.length ) return { 
+                status: 404,
+                error: 'no se encontraron productos' 
+            };
+
+            return productosEncontrados;
+
+        } catch ( error ) {
+            throw new Error( 'Ocurrio un error al obtener los productos:', error );
+        }
+
+    }
 
     async getAll() {
         

@@ -1,7 +1,9 @@
 const { Router } = require('express');
 
+const Productos = require('../models/Productos');
 const Carrito = require('../models/Carrito');
 
+const miProductos = new Productos('productos.json');
 const miCarrito = new Carrito('carritos.json');
 
 const carritoRouter = Router();
@@ -54,15 +56,29 @@ carritoRouter.get('/:id/productos', async (req, res) => {
     }
 });
 
-carritoRouter.post('/:id/productos/:id_product', async (req, res) => {
+carritoRouter.post('/:id/productos', async (req, res) => {
     try {
 
-        const { id, id_product } = req.params;
+        const { id } = req.params;
 
-        const carrito = await miCarrito.addProducto(parseInt(id), parseInt(id_product))
+        const { productos } = req.body;
+
+        if (!Object.keys(req.body).length) return res.status(400).json({
+            error: 'no se han enviado productos'
+        });
+
+        if (productos?.lenght) return res.status(400).json({
+            error: 'no se han especificado productos'
+        });
+
+        const productosEncontrados = await miProductos.getAllById( productos );
+
+        if (productosEncontrados.error) return res.status( productosEncontrados.status ).json( productosEncontrados );
+
+        const carrito = await miCarrito.addProducto(parseInt(id), productosEncontrados);
 
         if (carrito.error) return res.status( carrito.status ).json( carrito );
-        else res.status(201).json(carrito);
+        res.status(201).json(carrito);
 
     } catch (error) {
         res.status(500).json({

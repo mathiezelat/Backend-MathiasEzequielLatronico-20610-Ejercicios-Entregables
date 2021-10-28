@@ -40,6 +40,10 @@ productosRouter.post('/', isAdmin, async (req, res) => {
         foto,
         precio,
         stock } = req.body;
+
+    if (!Object.keys(req.body).length) return res.status(400).json({
+        error: 'no se ha enviado producto'
+    });
     
     const save = await miProductos.save( 
         { 
@@ -71,6 +75,10 @@ productosRouter.put('/:id', isAdmin, async (req, res) => {
         foto,
         precio,
         stock } = req.body;
+
+    if (!Object.keys(req.body).length) return res.status(400).json({
+        error: 'no se ha enviado producto'
+    });
 
     const productoUpdate = await miProductos.update( id, {         
         nombre, 

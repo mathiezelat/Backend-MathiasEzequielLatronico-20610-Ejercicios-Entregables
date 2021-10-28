@@ -28,5 +28,25 @@
     "id": 3,
     "codigo": 3,
     "timestamp": "27/10/2021 12:36:08"
+  },
+  {
+    "nombre": "Globo Terráqueo AZUL-NARANJA",
+    "descripcion": "Esto es un descripcion",
+    "foto": "URL HOY",
+    "precio": 3500,
+    "stock": 5,
+    "id": 4,
+    "codigo": 4,
+    "timestamp": "28/10/2021 10:39:46"
+  },
+  {
+    "nombre": "Globo Terráqueo AZUL-NARANJA",
+    "descripcion": "Esto es un descripcion",
+    "foto": "URL HOY",
+    "precio": 3500,
+    "stock": 5,
+    "id": 5,
+    "codigo": 5,
+    "timestamp": "28/10/2021 10:39:59"
   }
 ]
