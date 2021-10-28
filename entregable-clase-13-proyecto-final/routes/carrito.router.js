@@ -78,7 +78,7 @@ carritoRouter.post('/:id/productos', async (req, res) => {
         const carrito = await miCarrito.addProducto(parseInt(id), productosEncontrados);
 
         if (carrito.error) return res.status( carrito.status ).json( carrito );
-        res.status(201).json(carrito);
+        else res.status(201).json(carrito);
 
     } catch (error) {
         res.status(500).json({
