@@ -41,7 +41,7 @@ class Carrito extends Contenedor {
     async getAllCarritos() {
         try{
 
-            return await this.carritos;
+            return await this.readFile();
             
         } catch ( error ) {
             throw new Error( 'Ocurrio un error al leer los carritos:', error );
@@ -51,7 +51,7 @@ class Carrito extends Contenedor {
     async getCarritoProductos( id ) {
         try {
 
-            const carritos = await this.carritos;
+            const carritos = await this.readFile();
 
             const carrito = carritos.find( carrito => carrito.id === id );
 

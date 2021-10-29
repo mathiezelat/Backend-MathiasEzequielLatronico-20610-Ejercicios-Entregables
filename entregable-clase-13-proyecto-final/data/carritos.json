@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "timestamp": "29/10/2021 11:54:06",
+    "timestamp": "29/10/2021 19:48:51",
     "productos": [
       {
         "nombre": "Globo Terráqueo AZUL-VIOLETA",
@@ -9,10 +9,15 @@
         "foto": "URL HOY",
         "precio": 15500,
         "stock": 255,
-        "id": 1,
-        "codigo": 1,
-        "timestamp": "29/10/2021 11:53:22"
+        "id": 2,
+        "codigo": 2,
+        "timestamp": "29/10/2021 19:35:49"
       }
     ]
+  },
+  {
+    "id": 2,
+    "timestamp": "29/10/2021 19:49:48",
+    "productos": []
   }
 ]

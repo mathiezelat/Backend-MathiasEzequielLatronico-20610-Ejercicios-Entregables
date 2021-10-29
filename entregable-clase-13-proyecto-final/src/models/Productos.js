@@ -49,7 +49,7 @@ class Productos extends Contenedor {
 
         try{
 
-        const productos = await this.productos;
+        const productos = await this.readFile();
 
         const producto = productos.find( producto => producto.id === id );
 
@@ -108,7 +108,7 @@ class Productos extends Contenedor {
         
         try{
 
-            return await this.productos;
+            return await this.readFile();
             
         } catch ( error ) {
             throw new Error( 'Ocurrio un error al leer productos:', error );

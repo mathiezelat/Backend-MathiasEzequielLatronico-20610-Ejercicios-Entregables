@@ -8,5 +8,25 @@
     "id": 1,
     "codigo": 1,
     "timestamp": "29/10/2021 11:53:22"
+  },
+  {
+    "nombre": "Globo Terráqueo AZUL-VIOLETA",
+    "descripcion": "Esto es un descripcion",
+    "foto": "URL HOY",
+    "precio": 15500,
+    "stock": 255,
+    "id": 2,
+    "codigo": 2,
+    "timestamp": "29/10/2021 19:35:49"
+  },
+  {
+    "nombre": "Globo Terráqueo AZUL-VIOLETA",
+    "descripcion": "Esto es un descripcion",
+    "foto": "URL HOY",
+    "precio": 15500,
+    "stock": 255,
+    "id": 3,
+    "codigo": 3,
+    "timestamp": "29/10/2021 19:35:50"
   }
 ]
