@@ -1,0 +1,12 @@
+[
+  {
+    "nombre": "Globo Terráqueo AZUL-VIOLETA",
+    "descripcion": "Esto es un descripcion",
+    "foto": "URL HOY",
+    "precio": 15500,
+    "stock": 255,
+    "id": 1,
+    "codigo": 1,
+    "timestamp": "29/10/2021 11:53:22"
+  }
+]

@@ -3,8 +3,8 @@ const { Router } = require('express');
 const Productos = require('../models/Productos');
 const Carrito = require('../models/Carrito');
 
-const miProductos = new Productos('productos.json');
-const miCarrito = new Carrito('carritos.json');
+const miProductos = new Productos('./data/productos.json');
+const miCarrito = new Carrito('./data/carritos.json');
 
 const carritoRouter = Router();
 
@@ -44,7 +44,7 @@ carritoRouter.get('/:id/productos', async (req, res) => {
 
         const { id } = req.params;
 
-        const carrito = await miCarrito.getCarritoProductos( parseInt(id) )
+        const carrito = await miCarrito.getCarritoProductos( parseInt(id) );
 
         if (carrito.error) return res.status( carrito.status ).json( carrito );
         else res.status(200).json( carrito );

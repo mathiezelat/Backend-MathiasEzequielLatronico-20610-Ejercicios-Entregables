@@ -1,11 +1,12 @@
-const fs = require('fs');
+const Contenedor = require('./Contenedor');
 
-class Carrito {
+class Carrito extends Contenedor {
 
     constructor( archivo ) {
 
-        this.archivo = archivo;
-        this.carritos = this.getAllCarritos();
+        super( archivo );
+        
+        this.carritos = this.readFile();
 
     }
 
@@ -29,10 +30,7 @@ class Carrito {
 
         carritos.push( carrito );
 
-        await fs.promises.writeFile( 
-            this.archivo,
-            JSON.stringify( carritos, null, 2 )
-        );
+        await this.writeFile( carritos );
 
         return carrito;
         } catch ( error ) {
@@ -43,18 +41,7 @@ class Carrito {
     async getAllCarritos() {
         try{
 
-            if( !fs.existsSync( this.archivo ) ) return [];
-            
-            const contenido = await fs.promises.readFile(
-                this.archivo,
-                'utf-8'
-            );
-
-            if ( !contenido ) return [];
-
-            const carritos = JSON.parse( contenido );
-
-            return carritos;
+            return await this.carritos;
             
         } catch ( error ) {
             throw new Error( 'Ocurrio un error al leer los carritos:', error );
@@ -71,7 +58,7 @@ class Carrito {
             if ( !carrito ) return { 
                 status: 404,
                 error: 'carrito no encontrado' 
-            };;
+            };
 
             return carrito.productos;
 
@@ -90,14 +77,11 @@ class Carrito {
             if ( !carrito ) return { 
                 status: 404,
                 error: 'carrito no encontrado' 
-            };;
+            };
 
             carritos.splice( carritos.indexOf( carrito ), 1 );
 
-            await fs.promises.writeFile(
-                this.archivo,
-                JSON.stringify( carritos, null, 2 )
-            );
+            await this.writeFile( carritos );
 
             return carrito;
 
@@ -122,10 +106,7 @@ class Carrito {
                 carrito.productos.push( producto );
             }
 
-            await fs.promises.writeFile(
-                this.archivo,
-                JSON.stringify( carritos, null, 2 )
-            );
+            await this.writeFile( carritos );
 
             return carrito;
         } catch ( error ) {
@@ -143,21 +124,18 @@ class Carrito {
             if ( !carrito ) return {
                 status: 404,
                 error: 'carrito no encontrado'
-            }
+            };
 
             const producto = carrito.productos.find( producto => producto.id === productoId );
 
-            if(!producto) return {
+            if( !producto ) return {
                 status: 404,
                 error: 'producto no encontrado'
-            }
+            };
 
             carrito.productos.splice( carrito.productos.indexOf( producto ), 1 );
 
-            await fs.promises.writeFile(
-                this.archivo,
-                JSON.stringify( carritos, null, 2 )
-            )
+            await this.writeFile( carritos );
 
             return carrito;
         } catch ( error ) {

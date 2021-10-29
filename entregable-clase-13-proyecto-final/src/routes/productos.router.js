@@ -1,8 +1,8 @@
 const { Router } = require('express');
 const Productos = require('../models/Productos');
-const { isAdmin } = require('../admin');
+const isAdmin = require('../middlewares/isAdmin');
 
-const miProductos = new Productos('productos.json');
+const miProductos = new Productos('./data/productos.json');
 
 const productosRouter = Router();
 

@@ -1,4 +1,4 @@
-const { ADMIN } = require('./config/globals.js');
+const { ADMIN } = require('../config/globals.js');
 
 const isAdmin = (req, res, next) => {
     if( ADMIN === 'false' ) return res.status(401).send({ 
@@ -8,4 +8,4 @@ const isAdmin = (req, res, next) => {
     next();
 }
 
-module.exports = { isAdmin };
+module.exports = isAdmin;

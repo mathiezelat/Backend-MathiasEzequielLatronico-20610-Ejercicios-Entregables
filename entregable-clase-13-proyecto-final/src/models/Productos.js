@@ -1,11 +1,12 @@
-const fs = require('fs');
+const Contenedor = require('./Contenedor');
 
-class Productos {
+class Productos extends Contenedor {
 
     constructor( archivo ) {
 
-        this.archivo = archivo;
-        this.productos = this.getAll();
+        super( archivo );
+        
+        this.productos = this.readFile();
         
     }
 
@@ -34,10 +35,7 @@ class Productos {
             
             productos.push( producto );
             
-            await fs.promises.writeFile( 
-                this.archivo,
-                JSON.stringify( productos, null, 2 )
-            );
+            await this.writeFile( productos );
 
             return producto;
 
@@ -110,21 +108,10 @@ class Productos {
         
         try{
 
-            if( !fs.existsSync( this.archivo ) ) return [];
-            
-            const contenido = await fs.promises.readFile(
-                this.archivo,
-                'utf-8'
-            );
-
-            if ( !contenido ) return [];
-
-            const data = JSON.parse( contenido );
-
-            return data;
+            return await this.productos;
             
         } catch ( error ) {
-            throw new Error( 'Ocurrio un error al leer:', error );
+            throw new Error( 'Ocurrio un error al leer productos:', error );
         }
 
     }
@@ -158,10 +145,7 @@ class Productos {
 
             productos[productoIndex] = producto;
 
-            await fs.promises.writeFile( 
-                this.archivo,
-                JSON.stringify( productos, null, 2 )
-            );
+            await this.writeFile( productos );
 
             return productos[productoIndex];
 
@@ -178,17 +162,15 @@ class Productos {
         const productos = await this.productos;
         
         const producto = productos.find( producto => producto.id === id );
+        
         if (!producto) return {
             status: 404,
             error: 'el producto que intentas eliminar no existe'
         };
         
-        const nuevosProductos = productos.filter( producto => producto.id !== id );
+        productos.splice( productos.indexOf( producto ), 1 );
         
-        await fs.promises.writeFile( 
-            this.archivo,
-            JSON.stringify( nuevosProductos, null, 2 )
-        );
+        await this.writeFile( productos );
 
         return producto;
         
@@ -204,10 +186,7 @@ class Productos {
 
         this.productos = [];
 
-        await fs.promises.writeFile( 
-            this.archivo,
-            JSON.stringify( this.productos, null, 2 )
-        );
+        await this.writeFile( this.productos );
 
         } catch ( error ) {
             throw new Error( 'Ocurrio un error al eliminar todos los productos:', error );
