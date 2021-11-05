@@ -14,8 +14,6 @@ class ContenedorDB {
 
             const data = await this.selectById( id );
 
-            console.log({data, id});
-
             return data;
         } catch(err) {
             console.log(err);
