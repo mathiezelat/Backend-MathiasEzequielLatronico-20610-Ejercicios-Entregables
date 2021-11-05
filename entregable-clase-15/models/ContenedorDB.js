@@ -10,7 +10,13 @@ class ContenedorDB {
 
     async insertTable( object ){
         try {
-            await this.knex( this.table ).insert( object );
+            const [ id ] = await this.knex( this.table ).insert( object );
+
+            const data = await this.selectById( id );
+
+            console.log({data, id});
+
+            return data;
         } catch(err) {
             console.log(err);
         }
@@ -30,7 +36,7 @@ class ContenedorDB {
 
     async selectById(id){
         try {
-            const data = await this.knex.from( this.table )
+            const [ data ] = await this.knex.from( this.table )
                                     .select('*')
                                     .where( { id } );
 
