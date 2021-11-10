@@ -1,0 +1,170 @@
+
+0) Creo la base de datos llamada ecommerce .
+use ecommerce
+
+1 y 2) Agrego 10 productos y mensajes, a los productos le agrego el valor de precio entre 100 y 5000.
+db.productos.insert([
+    {
+        title: "Mouse",
+        price: 120,
+        thumbnail: "https://cdn2.iconfinder.com/data/icons/flat-icons-19/512/Mouse.png"
+    },
+    {
+        title: "Teclado",
+        price: 580,
+        thumbnail: "https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/keyboard-512.png"
+    },
+    {
+        title: "Watch",
+        price: 900,
+        thumbnail: "https://cdn4.iconfinder.com/data/icons/iconize-apple-devices-freebies/128/apple-04-512.png"
+    },
+    {
+        title: "iPhone",
+        price: 1280,
+        thumbnail: "https://cdn1.iconfinder.com/data/icons/flat-business-icons/128/mobile-512.png"
+    },
+    {
+        title: "MacBook",
+        price: 1700,
+        thumbnail: "https://www.iconfinder.com/icons/767880/computer_device_laptop_macbook_notebook_icon"
+    },
+    {
+        title: "iMac",
+        price: 2300,
+        thumbnail: "https://cdn4.iconfinder.com/data/icons/iconize-apple-devices-freebies/128/apple-01-512.png"
+    },
+    {
+        title: "Tierra",
+        price: 2860,
+        thumbnail: "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-512.png"
+    },
+    {
+        title: "Calculadora",
+        price: 3350,
+        thumbnail: "https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/calculator-256.png"
+    },
+    {
+        title: "Monitor",
+        price: 4320,
+        thumbnail: "https://cdn0.iconfinder.com/data/icons/devices-42/512/Normal_LCD-512.png"
+    },
+    {
+        title: "Diamante",
+        price: 4990,
+        thumbnail: "https://cdn3.iconfinder.com/data/icons/finance-152/64/40-512.png"
+    }
+])
+
+db.mensajes.insert([
+  {
+    "email": "name@example.com",
+    "text": "¡Hola Mundo!",
+    "fyh": ISODate()
+  },
+  {
+    "email": "name2@example.com",
+    "text": "¡Buenos días!",
+    "fyh": ISODate()
+  },
+  {
+    "email": "example@example.com",
+    "text": "¿Que tal?",
+    "fyh": ISODate()
+  },
+  {
+    "email": "example@example.com",
+    "text": "¿Hola?",
+    "fyh": ISODate()
+  },
+  {
+    "email": "name3@example.com",
+    "text": "¡Hola!",
+    "fyh": ISODate()
+  },
+  {
+    "email": "name@example.com",
+    "text": "¿Como están?",
+    "fyh": ISODate()
+  },
+  {
+    "email": "name2@example.com",
+    "text": "¡Bien!",
+    "fyh": ISODate()
+  },
+  {
+    "email": "example@example.com",
+    "text": "¡Genial!",
+    "fyh": ISODate()
+  },
+  {
+    "email": "name3@example.com",
+    "text": "¡Excelente!",
+    "fyh": ISODate()
+  },
+  {
+    "email": "example@example.com",
+    "text": "¡Que tengan un buen dia!",
+    "fyh": ISODate()
+  }
+])
+
+
+3) Listo todos los documentos de cada colección.
+db.productos.find().pretty()
+db.mensajes.find().pretty()
+
+
+4) Muestro la cantidad de documentos almacenados en cada una de ellas.
+db.productos.count()
+db.mensajes.count()
+
+
+5) Realizo un CRUD sobre la colección de productos.
+
+a) Agrego un producto más en la colección de productos
+db.productos.insert({
+    title: "Ruby",
+    price: 9500,
+    thumbnail: "https://cdn4.iconfinder.com/data/icons/stash/128/ruby-512.png"
+})
+
+b) Realizo consultas a productos
+
+I) Consulta por nombre de producto
+db.productos.find({ title: "Ruby" })
+
+II) Listo los productos con precio menor a 1000
+db.productos.find({ price: { $lt: 1000 } })
+
+III) Listo los productos con precio entre 1000 a 3000
+db.productos.find({ price: { $gt: 1000, $lt: 3000 } })
+
+IV) Listo los productos con precio mayor a 3000
+db.productos.find({ price: { $gt: 3000 } })
+
+V) Realizo una consulta que traiga sólo el nombre del tercer producto más barato
+db.productos.find( {}, { title: 1, _id: 0 } ).sort({ price: 1 }).skip(2).limit(1)
+
+
+c) Hago una actualización sobre todos los productos, que agrega el campo stock a todos ellos con un valor de 100
+db.productos.updateMany({}, { $set: { stock: 100  } })
+
+d) Cambio el stock a cero de los productos con precios mayores a 4000
+db.productos.updateMany({ price: { $gt: 4000  }  }, { $set: { stock: 0  } })
+
+e) Borro los productos con precio menor a 1000
+db.productos.deleteMany({ price: { $lt: 1000 } })
+
+
+6) Creo un usuario 'pepe' con la clave: 'asd456' que sólo puede leer la base de datos ecommerce
+
+use admin
+
+db.createUser({
+    user: "pepe",
+    pwd: "asd456",
+    roles: [
+        { role: "read", db: "ecommerce" }
+    ]
+})
