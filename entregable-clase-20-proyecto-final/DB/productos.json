@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "Globo Terráqueo Azul",
+    "descripcion": "Esto es un descripcion",
+    "foto": "URL DE GLOBO",
+    "precio": 85500,
+    "stock": 500,
+    "id": "1",
+    "codigo": "1",
+    "timestamp": "19/11/2021 21:57:13"
+  },
+  {
+    "nombre": "Globo Terráqueo Azul-Violeta",
+    "descripcion": "Esto es un descripcion",
+    "foto": "URL DE GLOBO",
+    "precio": 1988,
+    "stock": 500,
+    "id": "2",
+    "codigo": "2",
+    "timestamp": "19/11/2021 21:57:32"
+  }
+]
