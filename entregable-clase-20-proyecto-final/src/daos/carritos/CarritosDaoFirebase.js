@@ -43,7 +43,7 @@ class CarritosDaoFirebase extends ContenedorFirebase {
 
             return carrito.productos;
         } catch (error) {
-            throw new Error( 'Ocurrio un error:', error );
+            throw new Error( 'Ocurrio un error al obtener los productos del carrito:', error );
         }
     }
 

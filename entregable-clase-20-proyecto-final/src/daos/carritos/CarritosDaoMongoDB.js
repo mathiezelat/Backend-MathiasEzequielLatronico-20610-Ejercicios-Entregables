@@ -43,7 +43,7 @@ class CarritosDaoMongoDB extends ContenedorMongoDB{
 
             return carrito.productos;
         } catch (error) {
-            throw new Error( 'Ocurrio un error:', error );
+            throw new Error( 'Ocurrio un error al obtener los productos del carrito:', error );
         }
     }
 
@@ -68,7 +68,7 @@ class CarritosDaoMongoDB extends ContenedorMongoDB{
 
             return response;
         } catch (error) {
-            throw new Error( 'Ocurrio un error:', error );
+            throw new Error( 'Ocurrio un error al agregar un producto:', error );
         }
     }
 
