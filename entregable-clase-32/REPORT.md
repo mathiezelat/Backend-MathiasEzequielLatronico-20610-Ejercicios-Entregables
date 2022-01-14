@@ -86,11 +86,11 @@ Req/Bytes counts sampled once per second.
 
 #### Con `console.log`
 
-![](/graphs/con_log.png)
+![](./graphs/con_log.png)
 
 #### Sin `console.log`
 
-![](/graphs/sin_log.png)
+![](./graphs/sin_log.png)
 
 
 ## Conclusión obtenida a partir del análisis de los datos

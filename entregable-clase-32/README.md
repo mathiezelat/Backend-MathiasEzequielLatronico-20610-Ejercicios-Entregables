@@ -58,4 +58,4 @@ npm start // iniciamos el servidor con 0x
 npm test // realizo el test con autocannon
 ```
 
-Informe sobre las pruebas realizadas incluyendo los resultados de todos los test (texto e imágenes) [REPORT.md](/REPORT.md)
+Informe sobre las pruebas realizadas incluyendo los resultados de todos los test (texto e imágenes) [REPORT.md](./REPORT.md)
