@@ -1,0 +1,13 @@
+{"level":"error","message":"RUTA: /sdas - MÉTODO: GET - ERROR"}
+{"level":"error","message":"RUTA: /sdas - MÉTODO: GET - ERROR"}
+{"level":"error","message":"RUTA: /hola - MÉTODO: GET - ERROR"}
+{"level":"error","message":"RUTA: /favicon.ico - MÉTODO: GET - ERROR"}
+{"level":"warn","message":"RUTA: /favicon.ico - MÉTODO: GET - ERROR"}
+{"level":"warn","message":"RUTA: /sadasd - MÉTODO: GET - ERROR"}
+{"level":"warn","message":"RUTA: /dads - MÉTODO: GET - ERROR"}
+{"level":"warn","message":"RUTA: /asdasd - MÉTODO: GET - RUTA INEXISTENTE"}
+{"level":"warn","message":"RUTA: /sadasd - MÉTODO: GET - RUTA INEXISTENTE"}
+{"level":"warn","message":"RUTA: /favicon.ico - MÉTODO: GET - RUTA INEXISTENTE"}
+{"level":"warn","message":"RUTA: /favicon.ico - MÉTODO: GET - RUTA INEXISTENTE"}
+{"level":"warn","message":"RUTA: /favicon.ico - MÉTODO: GET - RUTA INEXISTENTE"}
+{"level":"warn","message":"RUTA: /favicon.ico - MÉTODO: GET - RUTA INEXISTENTE"}
