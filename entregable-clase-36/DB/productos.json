@@ -1,0 +1,12 @@
+[
+  {
+    "nombre": "Logo Tierra",
+    "descripcion": "esto es un logo tierra",
+    "foto": "https://images.vexels.com/media/users/3/157872/isolated/preview/8d20eee691b54d23d865a69f08a40cd7-icono-de-tierra-basica.png",
+    "precio": 1200,
+    "stock": 20,
+    "_id": "1",
+    "codigo": "1",
+    "timestamp": "31/1/2022 14:56:22"
+  }
+]

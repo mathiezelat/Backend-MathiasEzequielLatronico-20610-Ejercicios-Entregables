@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script defer src="/js/index.js"></script>
+    <script>
+        window.user = <%- JSON.stringify(user) %>;
+    </script>
+    <title>Home Page</title>
+</head>
+<body>
+    <main class="container is-family-monospace has-text-dark">
+        <section class="p-5 hero is-primary is-flex is-flex-direction-row is-align-items-center is-justify-content-space-between">
+            <p class="is-size-3 has-text-weight-bold">Bienvenido <%= user.email %></p>
+            <a href="/api/auth/logout" class="button is-warning">Logout</a>
+        </section>
+        <section class="section">
+            <h1 class="title">Información de usuario</h1>
+            <img src="<%= user.foto %>" alt="<%= user.email %>" width="100px">
+            <p>nombre: <%= user.nombre %></p>
+            <p>edad: <%= user.edad %></p>
+            <p>dirección: <%= user.direccion %></p>
+            <p>número de teléfono: +<%= user.telefono %></p>
+        </section>
+
+        <section class="section">
+            <p class="title">Productos</p>
+            <div class="list-products is-flex is-flex-wrap-wrap">
+            </div>
+        </section>
+
+        <section class="section">
+            <p class="title">Agregar producto al carrito</p>
+            <div>
+                <div class="select is-primary">
+                    <select name="carts" id="carts"></select>
+                </div>
+                <div class="select is-primary">
+                    <select name="products" id="products">
+                    </select>
+                </div>
+                <button id="btnAddProductToCart" class="button is-primary is-light">Agregar</button>
+            </div>
+        </section>
+
+        <section class="section">
+            <p class="title">Carritos</p>
+            <button class="button is-primary is-light" onclick="createCart()">
+                Crear carrito
+            </button>
+
+            <div class="list-carts is-flex is-flex-direction-column">
+            </div>
+        </section>
+    </main>
+</body>
+</html>

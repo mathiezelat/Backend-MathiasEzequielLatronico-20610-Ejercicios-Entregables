@@ -1,0 +1,35 @@
+<div class="p-5 mt-5 container">
+    <h1 class="is-family-monospace is-size-1">Login de Usuario</h1>
+
+    <form action="/api/auth/login" method="post">
+        <div class="field">
+            <label for="email" class="label">Ingrese su email</label>
+            <div class="control">
+                <input
+                    type="email"
+                    name="email"
+                    class="input is-rounded"
+                    required
+                />
+            </div>
+        </div>
+        <div class="field">
+            <label for="password" class="label">Ingrese su password</label>
+            <div class="control">
+                <input
+                    type="password"
+                    name="password"
+                    class="input is-rounded"
+                    required
+                />
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Log In" class="button is-primary" />
+        </div>
+    </form>
+
+    <br />
+
+    <a href="/signup" class="button is-link is-light">Ir a Signup</a>
+</div>

@@ -1,0 +1,57 @@
+<div class="p-5 mt-5 container"">
+
+    <h1 class="is-family-monospace is-size-1"> 
+        Signup de Usuario
+    </h1>
+
+    <form action="/api/auth/signup" enctype="multipart/form-data" method="post">
+        <div class="mb-3">
+            <label for="email" class="label">Ingrese su email</label>
+            <div class="control">
+                <input type="email" name="email" class="input is-rounded" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="label">Ingrese su password</label>
+            <div class="control">
+                <input type="password" name="password" class="input is-rounded" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="nombre" class="label">Ingrese su nombre</label>
+            <div class="control">
+                <input type="text" name="nombre" class="input is-rounded" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="direccion" class="label">Ingrese su dirección</label>
+            <div class="control">
+                <input type="text" name="direccion" class="input is-rounded" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="edad" class="label">Ingrese su edad</label>
+            <div class="control">
+                <input type="number" name="edad" class="input is-rounded" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="telefono" class="label">Ingrese su número de telefono</label>
+            <div class="control">
+                <input type="number" name="telefono" class="input is-rounded" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="foto" class="label">Ingrese su foto</label>
+            <div class="control">
+                <input type="file" name="foto" required />
+            </div>
+        </div>
+        <input type="submit" value="Sign up" class="button is-primary">
+    </form>
+
+    <br>
+
+    <a href="/login" class="button is-link is-light">Ir a Login</a>
+
+</div>
